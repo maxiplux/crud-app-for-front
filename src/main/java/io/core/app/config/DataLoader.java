@@ -30,6 +30,9 @@ import java.util.List;
 public class DataLoader implements ApplicationRunner {
     @Value("${dataset.sourcefile}")
     private String datasetFile;
+
+    @Value("${app.data.loader.user.admin.password}")
+    private String adminPassword;
     @Autowired
     //@Qualifier("CustomUserDetailsService")
     private IUserService userServices;
@@ -64,7 +67,7 @@ public class DataLoader implements ApplicationRunner {
         Role role2=this.roleRepository.save(Role.builder().name("ROLE_USER").build());
         List<Role> roles=List.of(role,role2);
 
-        User user= User.builder().username("admin").enabled(true).password(this.passwordEncoder.encode("admin")).roles(roles).build();
+        User user= User.builder().username("admin").enabled(true).password(this.passwordEncoder.encode(this.adminPassword)).roles(roles).build();
         this.userServices.save(user);
     }
 
