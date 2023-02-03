@@ -16,10 +16,10 @@ ENTRYPOINT ["java",  "-Djava.security.egd=file:/dev/./urandom","-jar","/app/spri
 #docker build -t maxiplux/io.core.app .
 
 
-#docker tag  3501cab4af42 maxiplux/livemarket.business.b2bcart:1.0.5
+#docker tag  5679b433b286 maxiplux/io.core.app:1.0.0
 #docker tag  39d440f82330 maxiplux/livemarket.business.b2bcart:kuerbernetes
 #docker push maxiplux/livemarket.business.b2bcart:kuerbernetes
-#docker push maxiplux/io.api.base:1.0.0
+#docker push maxiplux/io.core.app:1.0.0
 #docker push maxiplux/io.api.base:master .
 #docker buildx build --platform linux/amd64,linux/arm64 maxiplux/io.api.base:1.0.0 --push -t maxiplux/io.api.base:1.0.0
 #aws lightsail create-container-service --service-name api-server-demo --power micro --scale 1
