@@ -1,0 +1,53 @@
+# This configuration is intended for development purpose, it's **your** responsibility to harden it for production
+version: '3.8'
+services:
+  baseapi-app:
+    image: maxiplux/io.api.base:2022-05-01--12-15
+    restart: always
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_PROFILES_ACTIVE=dev,api-docs,quartz
+      - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USERNAME=baseapi
+      - DB_NAME=postgres
+      - DB_PASSWORD=baseapi
+
+      - JHIPSTER_SLEEP=1 # gives time for other services to boot before the application
+    # If you want to expose these ports outside your dev PC,
+    # remove the "127.0.0.1:" prefix
+    ports:
+      - 127.0.0.1:8080:8080
+    depends_on:
+      - db
+      - redis
+  db:
+    image: postgres:14.2
+    # volumes:
+    #   - ~/volumes/jhipster/baseapi/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    # If you want to expose these ports outside your dev PC,
+    # remove the "127.0.0.1:" prefix
+    ports:
+      - 127.0.0.1:5432:5432
+  redis:
+    image: redis:6.2.6-alpine
+    platform: linux/amd64
+    restart: always
+    ports:
+      - '6379:6379'
+    #command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    volumes:
+      - cache:/data
+volumes:
+  cache:
+    driver: local
+networks:
+  dockernet:
+    external: true
