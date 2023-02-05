@@ -85,7 +85,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         jwtAccessTokenConverter.setKeyPair(this.GenerateKeyPair());
         return jwtAccessTokenConverter;
     }
-
+    //Don't use this in PRO environments,don't be lazy you need to create your SSL certificate using putty-gen
+    //
     public KeyPair GenerateKeyPair()
     {
 

@@ -29,6 +29,7 @@ public class CustomRepositoryRestConfigurer implements RepositoryRestConfigurer 
 
 
         config.exposeIdsFor(Industry.class);
+
         config.exposeIdsFor(Sector.class);
 
         config.exposeIdsFor(Product.class);

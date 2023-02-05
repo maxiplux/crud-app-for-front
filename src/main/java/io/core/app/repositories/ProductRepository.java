@@ -9,6 +9,5 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@RestResource(path = "products", rel = "products")
 public interface ProductRepository extends PagingAndSortingRepository<Product, Long> {
 }

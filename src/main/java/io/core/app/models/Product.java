@@ -24,10 +24,10 @@ public class Product {
     @NotNull(message = "Name cannot be null")
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Industry industry;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Sector sector;
 
     @NotNull(message = "Website cannot be null")

@@ -1,0 +1,10 @@
+POST http://localhost:8080/oauth/token
+Header-Authorization: Basic Zmx1dHRlci1hcHA6TDRneno4RUNCcmRtelA4Q3BnR2VTVmE5
+Content-Type: application/x-www-form-urlencoded
+{
+  grant_type:password
+  username:admin
+  password:admin
+}
+
+###
