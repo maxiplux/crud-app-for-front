@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Table(name = "PRODUCTS")// with progress user is keywordof
 @Entity
@@ -20,15 +21,19 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    @NotNull(message = "Name cannot be null")
     private String name;
 
-    private String industry;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Industry industry;
 
-    private String sector;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Sector sector;
 
+    @NotNull(message = "Website cannot be null")
     private String website;
 
+    @NotNull(message = "RANK cannot be null")
     private String rank;
 
 }
