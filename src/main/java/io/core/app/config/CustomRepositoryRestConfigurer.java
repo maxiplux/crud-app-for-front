@@ -25,11 +25,12 @@ public class CustomRepositoryRestConfigurer implements RepositoryRestConfigurer 
     {
 
         ExposureConfiguration configCustom = config.getExposureConfiguration();
-        configCustom.forDomainType(Product.class).withItemExposure((metadata, httpMethods) -> httpMethods.disable(HttpMethod.PATCH));
+        //configCustom.forDomainType(Product.class).withItemExposure((metadata, httpMethods) -> httpMethods.disable(HttpMethod.PATCH));
 
 
         config.exposeIdsFor(Industry.class);
         config.exposeIdsFor(Sector.class);
+
         config.exposeIdsFor(Product.class);
 
         /*Class[] classes = entityManager.getMetamodel()
