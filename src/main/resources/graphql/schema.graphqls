@@ -1,0 +1,24 @@
+type Query {
+  ProductById(id: ID): Product
+  IndustryById(id: ID): Industry
+  SectorById(id: ID): Sector
+}
+
+type Product {
+  id: ID
+  name: String
+  website: String
+  rank: String
+
+  industry: Industry
+  sector: Sector
+
+}
+
+type Industry {
+  name: ID
+}
+
+type Sector {
+  name: ID
+}
