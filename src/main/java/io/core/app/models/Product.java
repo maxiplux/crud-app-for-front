@@ -1,5 +1,6 @@
 package io.core.app.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.opencsv.bean.CsvBindByPosition;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,9 +26,13 @@ public class Product {
     private String name;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "industry")
+    @JsonIdentityReference(alwaysAsId = true)
     private Industry industry;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "sector")
+    @JsonIdentityReference(alwaysAsId = true)
     private Sector sector;
 
     @NotNull(message = "Website cannot be null")

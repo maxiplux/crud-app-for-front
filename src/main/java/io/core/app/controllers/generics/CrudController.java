@@ -61,6 +61,16 @@ public abstract class CrudController<T> {
 //    @ApiImplicitParams({
 //            @ApiImplicitParam(name = "Authorization", value = "Authorization ", required = true, dataType = "string", paramType = "header", defaultValue = "Bearer ")
 //    })
+
+    @GetMapping(value = "{id}/")
+    public ResponseEntity<?> view(@PathVariable long id) {
+        Optional<T> pageInfo = service.findById(id);
+        return new ResponseEntity<T>(pageInfo.get(), HttpStatus.OK);
+    }
+
+    //    @ApiImplicitParams({
+//            @ApiImplicitParam(name = "Authorization", value = "Authorization ", required = true, dataType = "string", paramType = "header", defaultValue = "Bearer ")
+//    })
     @PatchMapping("{id}/")
     public ResponseEntity<?> updateByIdAndElement(@RequestParam("id") long id, @Valid @RequestBody T element, Errors errors) throws Throwable {
 
